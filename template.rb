@@ -16,9 +16,18 @@ gem "mislav-will_paginate", :lib => 'will_paginate', :source => 'http://gems.git
 gem "josevalim-inherited_resources", :lib => "inherited_resources", :source => "http://gems.github.com"
 gem "justinfrench-formtastic", :lib => 'formtastic', :source => 'http://gems.github.com'
 gem "rails-footnotes", :source => "http://gemcutter.org"
+gem "cucumber", :lib => false
+gem "cucumber-rails", :lib => false
+gem "rspec", :lib => false
+gem "rspec-rails", :lib => false
+gem "webrat"
 
 # configure plugins
 plugin "validation_reflection", :git => "git://github.com/redinger/validation_reflection.git"
+
+# configure rspec and cucumber
+generate :rspec
+generate :cucumber
 
 # configure gems manifest (for Heroku)
 file ".gems", open("#{repo}/.gems").read

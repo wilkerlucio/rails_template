@@ -4,3 +4,8 @@ mislav-will_paginate --source 'http://gems.github.com'
 josevalim-inherited_resources --source "http://gems.github.com"
 justinfrench-formtastic --source 'http://gems.github.com'
 rails-footnotes --source "http://gemcutter.org"
+rspec
+rspec-rails
+cucumber
+cucumber-rails
+webrat
