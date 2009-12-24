@@ -22,6 +22,9 @@ gem "rspec", :lib => false
 gem "rspec-rails", :lib => false
 gem "webrat"
 
+# install gems if needed
+rake "gems:install", :sudo => true
+
 # configure plugins
 plugin "validation_reflection", :git => "git://github.com/redinger/validation_reflection.git"
 
