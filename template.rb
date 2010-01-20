@@ -32,6 +32,9 @@ plugin "validation_reflection", :git => "git://github.com/redinger/validation_re
 generate :rspec
 generate :cucumber
 
+# include webrat br steps
+file "features/step_definitions/webrat_steps_br.rb", open("#{repo}/webrat_steps_br.rb").read
+
 # configure gems manifest (for Heroku)
 file ".gems", open("#{repo}/.gems").read
 
