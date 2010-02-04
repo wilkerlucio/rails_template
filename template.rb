@@ -38,11 +38,14 @@ file ".gems", open("#{repo}/.gems").read
 # create base populator
 rakefile "populate.rake", open("#{repo}/populate.rake").read
 
+# remove old javascript files
+run "rm public/javascripts/*"
+
 # add commonly used javascript libraries
-file "public/javascripts/jquery-1.4.1.min.js", open("http://code.jquery.com/jquery-1.4.1.min.js")
-file "public/javascripts/jquery.autocomplete.js", open("#{repo}/javascripts/jquery.autocomplete.js")
-file "public/javascripts/jquery.maskedinput-1.2.2.min.js", open("#{repo}/javascripts/jquery.maskedinput-1.2.2.min.js")
-file "public/javascripts/application.js", open("#{repo}/javascripts/application.js")
+file "public/javascripts/jquery-1.4.1.min.js", open("http://code.jquery.com/jquery-1.4.1.min.js").read
+file "public/javascripts/jquery.autocomplete.js", open("#{repo}/javascripts/jquery.autocomplete.js").read
+file "public/javascripts/jquery.maskedinput-1.2.2.min.js", open("#{repo}/javascripts/jquery.maskedinput-1.2.2.min.js").read
+file "public/javascripts/application.js", open("#{repo}/javascripts/application.js").read
 
 # initializing repository
 git :init
