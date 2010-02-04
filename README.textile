@@ -2,4 +2,4 @@ This repository contains my Rails Template files
 
 You can install the custom rails command @crails@ running the following command at your bin directory
 
-bc. curl http://github.com/wilkerlucio/rails_template/raw/master/crails
+bc. curl -O http://github.com/wilkerlucio/rails_template/raw/master/crails
