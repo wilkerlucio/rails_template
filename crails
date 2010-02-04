@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rails $* -m "http://github.com/wilkerlucio/rails_template/raw/master/template.rb" -d postgresql
