@@ -7,27 +7,27 @@ Dado /^que eu estou na página (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-Quando /^eu for para (.+)$/ do |page_name|
+Quando /^(?:eu )?for para (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-Quando /^eu pressionar o botão "([^\"]*)"$/ do |button|
+Quando /^(?:eu )?pressionar o botão "([^\"]*)"$/ do |button|
   click_button(button)
 end
 
-Quando /^eu seguir para a página "([^\"]*)"$/ do |link|
+Quando /^(?:eu )?seguir para a página "([^\"]*)"$/ do |link|
   click_link(link)
 end
 
-Quando /^eu seguir para a página "([^\"]*)" em "([^\"]*)"$/ do |link, parent|
+Quando /^(?:eu )?seguir para a página "([^\"]*)" em "([^\"]*)"$/ do |link, parent|
   click_link_within(parent, link)
 end
 
-Quando /^eu preencher o campo "([^\"]*)" com "([^\"]*)"$/ do |field, value|
+Quando /^(?:eu )?preencher o campo "([^\"]*)" com "([^\"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
-Quando /^eu preencher o campo "([^\"]*)" para "([^\"]*)"$/ do |value, field|
+Quando /^(?:eu )?preencher o campo "([^\"]*)" para "([^\"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 
@@ -42,19 +42,19 @@ end
 # TODO: Add support for checkbox, select og option
 # based on naming conventions.
 #
-Quando /^eu preencher os campos com:$/ do |fields|
+Quando /^(?:eu )?preencher os campos com:$/ do |fields|
   fields.rows_hash.each do |name, value|
-    Quando %{Eu preencher o campo "#{name}" com "#{value}"}
+    Quando %{eu preencher o campo "#{name}" com "#{value}"}
   end
 end
 
-Quando /^eu selecionar "([^\"]*)" no campo "([^\"]*)"$/ do |value, field|
+Quando /^(?:eu )?selecionar "([^\"]*)" no campo "([^\"]*)"$/ do |value, field|
   select(value, :from => field)
 end
 
 # Use this step in conjunction with Rail's datetime_select helper. For example:
 # Quando I select "December 25, 2008 10:00" as the date and time
-Quando /^eu selecionar a data e hora "([^\"]*)"$/ do |time|
+Quando /^(?:eu )?selecionar a data e hora "([^\"]*)"$/ do |time|
   select_datetime(time)
 end
 
@@ -67,7 +67,7 @@ end
 # The following steps would fill out the form:
 # When I select "November 23, 2004 11:20" as the "Preferred" date and time
 # And I select "November 25, 2004 10:30" as the "Alternative" date and time
-Quando /^eu selecionar a data e hora "([^\"]*)" no campo "([^\"]*)"$/ do |datetime, datetime_label|
+Quando /^(?:eu )?selecionar a data e hora "([^\"]*)" no campo "([^\"]*)"$/ do |datetime, datetime_label|
   select_datetime(datetime, :from => datetime_label)
 end
 
@@ -75,46 +75,46 @@ end
 # When I select "2:20PM" as the time
 # Note: Rail's default time helper provides 24-hour time-- not 12 hour time. Webrat
 # will convert the 2:20PM to 14:20 and then select it.
-Quando /^eu selecionar o horário "([^\"]*)"$/ do |time|
+Quando /^(?:eu )?selecionar o horário "([^\"]*)"$/ do |time|
   select_time(time)
 end
 
 # Use this step when using multiple time_select helpers on a page or you want to
 # specify the name of the time on the form.  For example:
 # When I select "7:30AM" as the "Gym" time
-Quando /^eu selecionar o horário "([^\"]*)" no campo "([^\"]*)"$/ do |time, time_label|
+Quando /^(?:eu )?selecionar o horário "([^\"]*)" no campo "([^\"]*)"$/ do |time, time_label|
   select_time(time, :from => time_label)
 end
 
 # Use this step in conjunction with Rail's date_select helper.  For example:
 # When I select "February 20, 1981" as the date
-Quando /^eu selecionar a data "([^\"]*)"$/ do |date|
+Quando /^(?:eu )?selecionar a data "([^\"]*)"$/ do |date|
   select_date(date)
 end
 
 # Use this step when using multiple date_select helpers on one page or
 # you want to specify the name of the date on the form. For example:
 # When I select "April 26, 1982" as the "Date of Birth" date
-Quando /^eu selecionar a data "([^\"]*)" no campo "([^\"]*)"$/ do |date, date_label|
+Quando /^(?:eu )?selecionar a data "([^\"]*)" no campo "([^\"]*)"$/ do |date, date_label|
   select_date(date, :from => date_label)
 end
 
-Quando /^eu marcar o campo "([^\"]*)"$/ do |field|
+Quando /^(?:eu )?marcar o campo "([^\"]*)"$/ do |field|
   check(field)
 end
 
-Quando /^eu desmarcar o campo "([^\"]*)"$/ do |field|
+Quando /^(?:eu )?desmarcar o campo "([^\"]*)"$/ do |field|
   uncheck(field)
 end
 
-Quando /^eu selecionar "([^\"]*)"$/ do |field|
+Quando /^(?:eu )?selecionar "([^\"]*)"$/ do |field|
   choose(field)
 end
 
 # Adds support for validates_attachment_content_type. Without the mime-type getting
 # passed to attach_file() you will get a "Photo file is not one of the allowed file types."
 # error message 
-Quando /^eu anexar o arquivo "([^\"]*)" no campo "([^\"]*)"$/ do |path, field|
+Quando /^(?:eu )?anexar o arquivo "([^\"]*)" no campo "([^\"]*)"$/ do |path, field|
   type = path.split(".")[1]
 
   case type
@@ -131,7 +131,7 @@ Quando /^eu anexar o arquivo "([^\"]*)" no campo "([^\"]*)"$/ do |path, field|
   attach_file(field, path, type)
 end
 
-Então /^eu devo ver "([^\"]*)"$/ do |text|
+Então /^(?:eu )?devo ver "([^\"]*)"$/ do |text|
   if defined?(Spec::Rails::Matchers)
     response.should contain(text)
   else
@@ -139,7 +139,7 @@ Então /^eu devo ver "([^\"]*)"$/ do |text|
   end
 end
 
-Então /^eu devo ver "([^\"]*)" dentro de "([^\"]*)"$/ do |text, selector|
+Então /^(?:eu )?devo ver "([^\"]*)" dentro de "([^\"]*)"$/ do |text, selector|
   within(selector) do |content|
     if defined?(Spec::Rails::Matchers)
       content.should contain(text)
@@ -149,7 +149,7 @@ Então /^eu devo ver "([^\"]*)" dentro de "([^\"]*)"$/ do |text, selector|
   end
 end
 
-Então /^eu devo ver \/([^\/]*)\/$/ do |regexp|
+Então /^(?:eu )?devo ver \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
   if defined?(Spec::Rails::Matchers)
     response.should contain(regexp)
@@ -158,7 +158,7 @@ Então /^eu devo ver \/([^\/]*)\/$/ do |regexp|
   end
 end
 
-Então /^eu devo ver \/([^\/]*)\/ dentro de "([^\"]*)"$/ do |regexp, selector|
+Então /^(?:eu )?devo ver \/([^\/]*)\/ dentro de "([^\"]*)"$/ do |regexp, selector|
   within(selector) do |content|
     regexp = Regexp.new(regexp)
     if defined?(Spec::Rails::Matchers)
@@ -169,7 +169,7 @@ Então /^eu devo ver \/([^\/]*)\/ dentro de "([^\"]*)"$/ do |regexp, selector|
   end
 end
 
-Então /^eu não devo ver "([^\"]*)"$/ do |text|
+Então /^(?:eu )?não devo ver "([^\"]*)"$/ do |text|
   if defined?(Spec::Rails::Matchers)
     response.should_not contain(text)
   else
@@ -177,7 +177,7 @@ Então /^eu não devo ver "([^\"]*)"$/ do |text|
   end
 end
 
-Então /^eu não devo ver "([^\"]*)" dentro de "([^\"]*)"$/ do |text, selector|
+Então /^(?:eu )?não devo ver "([^\"]*)" dentro de "([^\"]*)"$/ do |text, selector|
   within(selector) do |content|
     if defined?(Spec::Rails::Matchers)
         content.should_not contain(text)
@@ -187,7 +187,7 @@ Então /^eu não devo ver "([^\"]*)" dentro de "([^\"]*)"$/ do |text, selector|
   end
 end
 
-Então /^eu não devo ver \/([^\/]*)\/$/ do |regexp|
+Então /^(?:eu )?não devo ver \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
   if defined?(Spec::Rails::Matchers)
     response.should_not contain(regexp)
@@ -196,7 +196,7 @@ Então /^eu não devo ver \/([^\/]*)\/$/ do |regexp|
   end
 end
 
-Então /^eu não devo ver \/([^\/]*)\/ dentro de "([^\"]*)"$/ do |regexp, selector|
+Então /^(?:eu )?não devo ver \/([^\/]*)\/ dentro de "([^\"]*)"$/ do |regexp, selector|
   within(selector) do |content|
     regexp = Regexp.new(regexp)
     if defined?(Spec::Rails::Matchers)
@@ -239,7 +239,7 @@ Então /^o checkbox "([^\"]*)" não deve estar marcado$/ do |label|
   end
 end
 
-Então /^eu devo estar na página (.+)$/ do |page_name|
+Então /^(?:eu )?devo estar na página (.+)$/ do |page_name|
   if defined?(Spec::Rails::Matchers)
     URI.parse(current_url).path.should == path_to(page_name)
   else
