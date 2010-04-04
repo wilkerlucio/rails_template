@@ -34,7 +34,7 @@ generate :devise_install
 append_file "config/environments/development.rb", "\nconfig.action_mailer.default_url_options = { :host => 'localhost:3000' }"
 
 # configure mongoid
-file "config/initializers/mongoid.rb", open("#{repo}/initializers/mongoid.rb")
+file "config/initializers/mongoid.rb", open("#{repo}/initializers/mongoid.rb").read
 file "config/database.mongo.yml", ERB.new(open("#{repo}/database.mongo.yml.erb"), 0, "%<>").result(binding)
 gsub_file "config/environment.rb",
           'end', "  config.after_initialize do\n    RPXNow.api_key = \"YOUR_APP_ID\"\n  end\nend"
