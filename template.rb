@@ -38,6 +38,17 @@ file "public/javascripts/jquery.autocomplete.js", open("#{repo}/javascripts/jque
 file "public/javascripts/jquery.maskedinput-1.2.2.min.js", open("#{repo}/javascripts/jquery.maskedinput-1.2.2.min.js").read
 file "public/javascripts/application.js", open("#{repo}/javascripts/application.js").read
 
+# option brazilian configuration
+if yes?("Setup pt-br language?")
+  # download pt-br i18n and configure environment
+  file "config/locales/pt-BR.yml", open("#{repo}/pt-BR.yml").read
+  gsub_file "config/environment.rb",
+            '# config.i18n.default_locale = :de', 'config.i18n.default_locale = "pt-BR"'
+  
+  # include webrat br steps
+  file "features/step_definitions/webrat_steps_br.rb", open("#{repo}/webrat_steps_br.rb").read
+end
+
 # initializing repository
 git :init
 git :add => "."
