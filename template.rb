@@ -31,7 +31,7 @@ generate :cucumber
 generate :formtastic
 generate :devise_install
 
-append_file "environments/development.rb", "\nconfig.action_mailer.default_url_options = { :host => 'localhost:3000' }"
+append_file "config/environments/development.rb", "\nconfig.action_mailer.default_url_options = { :host => 'localhost:3000' }"
 
 # configure mongoid
 file "config/initializers/mongoid.rb", open("#{repo}/initializers/mongoid.rb")
