@@ -7,9 +7,9 @@ file ".gitignore", open("#{repo}/.gitignore").read
 # configure gems
 gem "bistro_car"
 gem "will_paginate"
-gem "inherited_resources"
-gem "has_scope"
-gem "responders"
+gem "inherited_resources", :version => "1.0.3"
+gem "has_scope",           :version => "0.4.2"
+gem "responders",          :version => "0.4.6"
 gem "haml"
 gem "formtastic"
 gem "rails-footnotes"
