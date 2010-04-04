@@ -30,6 +30,7 @@ generate :rspec
 generate :cucumber
 generate :formtastic
 generate :devise_install
+generate :nifty_layout
 
 append_file "config/environments/development.rb", "\nconfig.action_mailer.default_url_options = { :host => 'localhost:3000' }"
 
