@@ -6,10 +6,16 @@ file ".gitignore", open("#{repo}/.gitignore").read
 
 # configure gems
 gem "bistro_car"
-gem "mislav-will_paginate", :lib => 'will_paginate', :source => 'http://gems.github.com'
-gem "josevalim-inherited_resources", :lib => "inherited_resources", :source => "http://gems.github.com"
-gem "justinfrench-formtastic", :lib => 'formtastic', :source => 'http://gems.github.com'
-gem "rails-footnotes", :source => "http://gemcutter.org"
+gem "will_paginate"
+gem "inherited_resources"
+gem "has_scope"
+gem "responders"
+gem "haml"
+gem "formtastic"
+gem "rails-footnotes"
+gem "mongoid"
+gem "rpx_now"
+gem "devise"
 gem "cucumber", :lib => false
 gem "cucumber-rails", :lib => false
 gem "rspec", :lib => false
