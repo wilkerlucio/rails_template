@@ -42,6 +42,9 @@ file "config/database.mongo.yml", ERB.new(open("#{repo}/database.mongo.yml.erb")
 gsub_file "config/environment.rb",
           /^end/, "  config.after_initialize do\n    RPXNow.api_key = \"YOUR_APP_ID\"\n  end\nend"
 
+# configure sass
+file "config/initializers/sass.rb", open("#{repo}/initializers/sass.rb").read
+
 # create base populator
 rakefile "populate.rake", open("#{repo}/populate.rake").read
 
