@@ -1,5 +1,8 @@
+require 'erb'
+
 #configuration
 repo = 'http://github.com/wilkerlucio/rails_template/raw/master'
+app_name = @root.split('/').last
 
 # ignoring files
 file ".gitignore", open("#{repo}/.gitignore").read
@@ -22,9 +25,19 @@ gem "rspec", :lib => false
 gem "rspec-rails", :lib => false
 gem "webrat"
 
-# configure rspec and cucumber
+# generate things
 generate :rspec
 generate :cucumber
+generate :formtastic
+generate :devise_install
+
+append_file "environments/development.rb", "\nconfig.action_mailer.default_url_options = { :host => 'localhost:3000' }"
+
+# configure mongoid
+file "config/initializers/mongoid.rb", open("#{repo}/initializers/mongoid.rb")
+file "config/database.mongo.yml", ERB.new(open("#{repo}/database.mongo.yml.erb"), 0, "%<>").result(binding)
+gsub_file "config/environment.rb",
+          'end', "  config.after_initialize do\n    RPXNow.api_key = \"YOUR_APP_ID\"\n  end\nend"
 
 # create base populator
 rakefile "populate.rake", open("#{repo}/populate.rake").read

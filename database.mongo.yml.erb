@@ -1,0 +1,22 @@
+defaults: &defaults
+  host: localhost
+  # slave_one:
+  #   port: 27018
+  # slave_two:
+  #   port: 27019
+
+development:
+  <<: *defaults
+  database: <%= app_name %>_development
+
+test:
+  <<: *defaults
+  database: <%= app_name %>_test
+
+cucumber:
+  <<: *defaults
+  database: <%= app_name %>_test
+
+production:
+  <<: *defaults
+  database: <%= app_name %>_production
