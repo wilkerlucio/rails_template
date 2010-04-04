@@ -37,8 +37,10 @@ append_file "config/environments/development.rb", "\nconfig.action_mailer.defaul
 # configure mongoid
 file "config/initializers/mongoid.rb", open("#{repo}/initializers/mongoid.rb").read
 file "config/database.mongo.yml", ERB.new(open("#{repo}/database.mongo.yml.erb"), 0, "%<>").result(binding)
+
+# configure rpx
 gsub_file "config/environment.rb",
-          'end', "  config.after_initialize do\n    RPXNow.api_key = \"YOUR_APP_ID\"\n  end\nend"
+          /^end/, "  config.after_initialize do\n    RPXNow.api_key = \"YOUR_APP_ID\"\n  end\nend"
 
 # create base populator
 rakefile "populate.rake", open("#{repo}/populate.rake").read
