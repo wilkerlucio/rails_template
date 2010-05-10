@@ -23,6 +23,9 @@ generate :nifty_layout, "--haml"
 
 append_file "config/environments/development.rb", "\nconfig.action_mailer.default_url_options = { :host => 'localhost:3000' }"
 
+# factory girl
+file "specs/factories.rb", '# put your factories here'
+
 # remove activerecord
 gsub_file "config/enviroment.rb",
   '# config.frameworks -= [ :active_record, :active_resource, :action_mailer ]', 'config.frameworks -= [:active_record]'
