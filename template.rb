@@ -23,6 +23,10 @@ generate :nifty_layout, "--haml"
 
 append_file "config/environments/development.rb", "\nconfig.action_mailer.default_url_options = { :host => 'localhost:3000' }"
 
+# remove activerecord
+gsub_file "config/enviroment.rb",
+  '# config.frameworks -= [ :active_record, :active_resource, :action_mailer ]', 'config.frameworks -= [:active_record]'
+
 # configure mongoid
 file "config/initializers/mongoid.rb", open("#{repo}/initializers/mongoid.rb").read
 file "config/database.mongo.yml", ERB.new(open("#{repo}/database.mongo.yml.erb"), 0, "%<>").result(binding)
