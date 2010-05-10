@@ -7,23 +7,12 @@ app_name = @root.split('/').last
 # ignoring files
 file ".gitignore", open("#{repo}/.gitignore").read
 
+# configure bundler
+file "config/boot.rb", open("#{repo}/boot.rb").read
+file "config/preinitializer.rb", open("#{repo}/preinitializer.rb").read
+
 # configure gems
-gem "bistro_car"
-gem "will_paginate"
-gem "inherited_resources", :version => "1.0.3"
-gem "has_scope",           :version => "0.4.2"
-gem "responders",          :version => "0.4.6"
-gem "haml"
-gem "formtastic"
-gem "rails-footnotes"
-gem "mongoid"
-gem "rpx_now"
-gem "devise"
-gem "cucumber", :lib => false
-gem "cucumber-rails", :lib => false
-gem "rspec", :lib => false
-gem "rspec-rails", :lib => false
-gem "webrat"
+file "Gemfile", open("#{repo}/gems").read
 
 # generate things
 generate :rspec
@@ -38,12 +27,11 @@ append_file "config/environments/development.rb", "\nconfig.action_mailer.defaul
 file "config/initializers/mongoid.rb", open("#{repo}/initializers/mongoid.rb").read
 file "config/database.mongo.yml", ERB.new(open("#{repo}/database.mongo.yml.erb"), 0, "%<>").result(binding)
 
-# configure rpx
-gsub_file "config/environment.rb",
-          /^end/, "  config.after_initialize do\n    RPXNow.api_key = \"YOUR_APP_ID\"\n  end\nend"
-
 # configure sass
 file "config/initializers/sass.rb", open("#{repo}/initializers/sass.rb").read
+
+# configure dragonfly
+file "config/initializers/dragonfly_images.rb", open("#{repo}/initializers/dragonfly_images.rb").read
 
 # create base populator
 rakefile "populate.rake", open("#{repo}/populate.rake").read

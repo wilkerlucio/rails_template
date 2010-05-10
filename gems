@@ -1,0 +1,27 @@
+source :gemcutter
+
+gem "rails", "~> 2.3.5"
+gem 'warden'
+gem 'devise'
+gem 'bson_ext'
+gem 'mongoid', :git => "git://github.com/wilkerlucio/mongoid.git", :branch => "1.x"
+gem 'bson_ext'
+gem 'rails-footnotes'
+gem 'formtastic'
+gem 'haml'
+gem 'inherited_resources', '~> 1.0.6'
+gem 'rmagick', :require => 'RMagick'
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', :git => "git://github.com/wilkerlucio/dragonfly.git"
+gem 'gmaps_v3'
+gem 'hirb'
+
+group :test do
+  gem 'webrat'
+  gem 'rspec-rails', :require => false
+  gem 'rspec', :require => false
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber', :require => false
+  gem 'factory_girl'
+  gem 'database_cleaner', "0.5.1"
+end
