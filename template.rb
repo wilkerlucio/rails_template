@@ -14,6 +14,9 @@ file "config/preinitializer.rb", open("#{repo}/preinitializer.rb").read
 # configure gems
 file "Gemfile", open("#{repo}/gems").read
 
+# configure plugins
+plugin "dragonfly_mongoid_extensions", :git => "git@github.com:wilkerlucio/dragonfly_mongoid_extensions.git"
+
 # generate things
 generate :rspec
 generate :cucumber
