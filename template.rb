@@ -25,6 +25,7 @@ generate :devise_install
 generate :nifty_layout, "--haml"
 
 append_file "config/environments/development.rb", "\nconfig.action_mailer.default_url_options = { :host => 'localhost:3000' }"
+append_file "config/initializers/devise.rb", "\nMongoid::Document::ClassMethods.send(:include, Devise::Models)"
 
 # factory girl
 file "specs/factories.rb", '# put your factories here'
