@@ -44,9 +44,6 @@ file "config/initializers/sass.rb", open("#{repo}/initializers/sass.rb").read
 # configure dragonfly
 file "config/initializers/dragonfly_images.rb", open("#{repo}/initializers/dragonfly_images.rb").read
 
-# create base populator
-rakefile "populate.rake", open("#{repo}/populate.rake").read
-
 # remove old javascript files
 run "rm public/javascripts/*"
 
