@@ -27,8 +27,14 @@ generate :nifty_layout, "--haml"
 append_file "config/environments/development.rb", "\nconfig.action_mailer.default_url_options = { :host => 'localhost:3000' }"
 append_file "config/initializers/devise.rb", "\nMongoid::Document::ClassMethods.send(:include, Devise::Models)"
 
+# configure rspec
+file "spec/spec_helper.rb", open("#{repo}/spec_helper.rb").read
+
+# configure cucumber
+file "features/support/env.rb", open("#{repo}/cucumber_env.rb").read
+
 # factory girl
-file "specs/factories.rb", '# put your factories here'
+file "spec/factories.rb", '# put your factories here'
 
 # remove activerecord
 gsub_file "config/environment.rb",
